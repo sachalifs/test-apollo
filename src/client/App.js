@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { graphql } from 'react-apollo'
 import resprofile from 'queries/restaurant-profile.graphql'
+import './styles.scss'
 
 const mapResultsToProps = (props) => {
   console.log({ ...props })
