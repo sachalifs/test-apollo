@@ -1,20 +1,24 @@
-import React from "react"
+import React from 'react'
 import { render } from "react-dom"
 import ApolloClient from "apollo-boost"
 import { ApolloProvider } from "react-apollo"
-import App from "./App"
+import { Route, BrowserRouter as Router, Switch } from 'react-router-dom'
+import App from './App'
 import { uri } from 'config'
-import resprofile from 'queries/restaurant-profile.graphql'
 
 const client = new ApolloClient({
   uri
 })
 
-console.log(resprofile)
-
-render(
+const routing = (
   <ApolloProvider client={client}>
-    <App />
+    <Router>
+      <Switch>
+        <Route path="/" component={App} />
+        {/* <Route path="/restaurant" component={Restaurants} /> */}
+      </Switch>
+    </Router>
   </ApolloProvider>
-  , document.getElementById("app")
 )
+
+render(routing, document.getElementById('app'))
