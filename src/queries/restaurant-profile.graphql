@@ -1,0 +1,5 @@
+query RestaurantProfile {
+  restaurant(id: 66) {
+    name
+  }
+}
