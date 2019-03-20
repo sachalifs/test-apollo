@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { graphql } from 'react-apollo'
 import resprofile from 'queries/restaurant-profile.graphql'
-import './styles.scss'
+import Header from 'components/Header'
 
 const mapResultsToProps = (props) => {
   console.log({ ...props })
@@ -18,9 +18,9 @@ class App extends Component {
   render() {
     const { restaurant, loading } = this.props
 
-    if (loading) return 'Loading'
+    if (loading) return 'Loading...'
 
-    return <h1>{restaurant.name}</h1>
+    return <Header />
   }
 }
 

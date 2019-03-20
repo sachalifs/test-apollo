@@ -1,5 +1,6 @@
 const path = require('path')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const CopyPlugin = require('copy-webpack-plugin')
 
 const exclude = /node_modules/
 
@@ -29,7 +30,10 @@ module.exports = {
       // both options are optional
       filename: '[name].css',
       chunkFilename: '[id].css'
-    })
+    }),
+    new CopyPlugin([
+      { from: path.join(__dirname, 'src', 'assets', 'images') }
+    ])
   ],
   resolve: {
     modules: [path.resolve(__dirname, 'src'), 'node_modules']
