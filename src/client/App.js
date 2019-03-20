@@ -33,6 +33,11 @@ class App extends Component {
             ]} />
           </div>
         </div>
+        <div className='container mt-2'>
+          <div className='col-xs'>
+            <h1 className='h3'>Sadler</h1>
+          </div>
+        </div>
       </div>
     )
   }
