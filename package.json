@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "NODE_PATH=src nodemon --exec babel-node src/server"
+    "start": "NODE_PATH=src nodemon --exec babel-node src/server",
+    "build": "webpack"
   },
   "author": "",
   "license": "ISC",
@@ -14,8 +15,18 @@
     "@babel/node": "^7.2.2",
     "@babel/preset-env": "^7.4.1",
     "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.5",
+    "handlebars": "^4.1.1",
     "hapi": "^18.1.0",
+    "inert": "^5.1.2",
     "nodemon": "^1.18.10",
-    "react-router": "^5.0.0"
+    "react": "^16.8.4",
+    "react-dom": "^16.8.4",
+    "react-router": "^5.0.0",
+    "vision": "^5.4.4"
+  },
+  "devDependencies": {
+    "webpack": "^4.29.6",
+    "webpack-cli": "^3.3.0"
   }
 }
