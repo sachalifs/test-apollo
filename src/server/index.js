@@ -21,6 +21,12 @@ const server = new Hapi.server({
 })
 
 server.route({
+  path: '/restaurant/{slug}',
+  method: 'GET',
+  handler: (req, h) => h.view('index')
+})
+
+server.route({
   path: '/',
   method: 'GET',
   handler: (req, h) => h.view('index')
