@@ -1,12 +1,14 @@
 @import 'src/styles/colors.scss';
+@import 'src/styles/variables.scss';
 
 .navbar-container {
-  padding-top: 56px;
+  padding-top: $headerHeight;
 }
 
 #navbar {
   background-color: $primary;
   color: white;
+  height: $headerHeight;
 }
 
 .fas {

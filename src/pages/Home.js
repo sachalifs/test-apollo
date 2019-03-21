@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import resSerch from 'src/queries/restaurant-search.graphql'
 import 'src/styles/home.scss'
 import RestaurantListItem from 'src/components/RestaurantListItem'
+import Loading from 'src/components/Loading'
 
 const mapResultsToProps = ({ data: { loading, restaurantSearch } }) => ({
   restaurants: restaurantSearch && restaurantSearch.restaurants,
@@ -24,7 +25,7 @@ class Home extends Component {
   render() {
     const { restaurants, loading } = this.props
 
-    if (loading) return 'Loading...'
+    if (loading) return <Loading />
 
     return (
       <div className='container'>

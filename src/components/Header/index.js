@@ -8,7 +8,7 @@ const Header = ({ location }) => {
 
   return (
     <div className='navbar-container'>
-      <nav id='navbar' className='navbar fixed-top' style={{ height: 56 }}>
+      <nav id='navbar' className='navbar fixed-top'>
         <div className='container'>
           <div className='row' style={{ flex: 1 }}>
             <div className='col-2 d-flex align-items-center'>
