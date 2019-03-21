@@ -1,23 +1,15 @@
 query RestaurantSearch($cuisines: [String]) {
   restaurantSearch(cuisines: $cuisines) {
-    totalRecords
-    totalPages
+    facets {
+      cuisine {
+        name
+      }
+    }
     restaurants {
       id
       internalId
       name
       slug
-      status
-      isActive
-      isPermanentlyClosed
-      slots {
-        discount
-      }
-      availability {
-        slots {
-          time
-        }
-      }
       description
       priceRange {
         from
@@ -62,19 +54,6 @@ query RestaurantSearch($cuisines: [String]) {
       location
       thumbs: photos(version: SQUARE, count: 3) {
         url
-      }
-      openingTimes {
-        schedule(sortBy: NEAR_TODAY) {
-          isCurrentDate
-          date
-          dayName
-          shiftsLabel
-        }
-        currentStatus {
-          status
-          currentStatusLabel
-          nextStatusLabel
-        }
       }
     }
   }
