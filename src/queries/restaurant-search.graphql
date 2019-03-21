@@ -1,5 +1,5 @@
-query RestaurantSearch {
-  restaurantSearch(cuisines: "parrilla") {
+query RestaurantSearch($cuisines: [String]) {
+  restaurantSearch(cuisines: $cuisines) {
     totalRecords
     totalPages
     restaurants {

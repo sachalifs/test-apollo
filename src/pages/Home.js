@@ -3,6 +3,7 @@ import { graphql } from 'react-apollo'
 import { Link } from 'react-router-dom'
 import resSerch from 'src/queries/restaurant-search.graphql'
 import 'src/styles/home.scss'
+import CuisineSelector from 'src/components/CuisineSelector'
 
 const mapResultsToProps = ({ data: { loading, restaurantSearch } }) => ({
   restaurants: restaurantSearch && restaurantSearch.restaurants,
@@ -11,7 +12,7 @@ const mapResultsToProps = ({ data: { loading, restaurantSearch } }) => ({
 
 const mapPropsToOptions = () => ({
   variables: {
-    slug: 'la-cabrera'
+    cuisines: 'sushi'
   }
 })
 
@@ -27,6 +28,7 @@ class Home extends Component {
 
     return (
       <div className='container'>
+        <CuisineSelector />
         {restaurants.map((restaurant, i) => {
           const { name, slug, primaryPhoto } = restaurant
 
