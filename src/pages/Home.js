@@ -2,10 +2,11 @@ import React, { Component } from 'react'
 import { graphql } from 'react-apollo'
 import { Link } from 'react-router-dom'
 import resSerch from 'src/queries/restaurant-search.graphql'
+import 'src/styles/home.scss'
 
-const mapResultsToProps = props => ({
-  restaurantSearch: props.data.restaurantSearch,
-  loading: props.data.loading
+const mapResultsToProps = ({ data: { loading, restaurantSearch } }) => ({
+  restaurants: restaurantSearch && restaurantSearch.restaurants,
+  loading
 })
 
 const mapPropsToOptions = () => ({
@@ -20,22 +21,27 @@ const mapPropsToOptions = () => ({
 })
 class Home extends Component {
   render() {
-    const { restaurantSearch, loading } = this.props
+    const { restaurants, loading } = this.props
 
     if (loading) return 'Loading...'
 
     return (
-      <ul>
-        {restaurantSearch.restaurants.map((restaurant, i) => {
-
-          const { name, slug } = restaurant
+      <div className='container'>
+        {restaurants.map((restaurant, i) => {
+          const { name, slug, primaryPhoto } = restaurant
 
           return (
-            <li key={i}>
-              <Link to={`/restaurant/${slug}`}>{name}</Link>
-            </li>)
+            <Link to={`/restaurant/${slug}`} className='row mt-3 pb-3 restaurant-card text-dark' key={i}>
+              <div className='col-4'>
+                <img className='img-thumbnail' src={primaryPhoto.url} />
+              </div>
+              <div className='col-8 pl-0'>
+                <h2 className='h5'>{name}</h2>
+              </div>
+            </Link>
+          )
         })}
-      </ul>
+      </div>
     )
   }
 }
