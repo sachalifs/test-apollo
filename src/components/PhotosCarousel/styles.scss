@@ -7,3 +7,8 @@
   top: 0;
   background-image: linear-gradient(rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.15) 25%, rgba(0, 0, 0, 0.075) 32.5%, rgba(0, 0, 0, 0.0375) 37.75%, rgba(0, 0, 0, 0.0185) 41.425%, rgba(0, 0, 0, 0.0095) 44%, transparent 50%, rgba(0, 0, 0, 0.0095) 56%, rgba(0, 0, 0, 0.0185) 58.575%, rgba(0, 0, 0, 0.0375) 62.25%, rgba(0, 0, 0, 0.075) 67.5%, rgba(0, 0, 0, 0.15) 75%, rgba(0, 0, 0, 0.5) 100%);
 }
+
+.carousel-item img {
+  height: 244px;
+  object-fit: cover;
+}

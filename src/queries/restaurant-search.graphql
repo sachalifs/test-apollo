@@ -1,0 +1,81 @@
+query RestaurantSearch {
+  restaurantSearch(cuisines: "parrilla") {
+    totalRecords
+    totalPages
+    restaurants {
+      id
+      internalId
+      name
+      slug
+      status
+      isActive
+      isPermanentlyClosed
+      slots {
+        discount
+      }
+      availability {
+        slots {
+          time
+        }
+      }
+      description
+      priceRange {
+        from
+        to
+      }
+      url
+      favorited
+      address
+      zone {
+        id
+        name
+      }
+      primaryPhoto: primaryPhoto(version: SQUARE_HD) {
+        url
+      }
+      primaryPhotoDesktop: primaryPhoto(version: FULL_SIZE) {
+        url
+      }
+      primaryCuisine {
+        id
+        name
+      }
+      cuisines {
+        id
+        name
+      }
+      pricing {
+        confidenceLevel
+        expectedMealPrice
+      }
+      reviews {
+        count
+      }
+      country {
+        currency
+      }
+      numericRating
+      hotDeal {
+        discountPercentage
+        endTime
+      }
+      location
+      thumbs: photos(version: SQUARE, count: 3) {
+        url
+      }
+      openingTimes {
+        schedule(sortBy: NEAR_TODAY) {
+          isCurrentDate
+          date
+          dayName
+          shiftsLabel
+        }
+        currentStatus {
+          status
+          currentStatusLabel
+          nextStatusLabel
+        }
+      }
+    }
+  }
+}
