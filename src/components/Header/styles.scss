@@ -1,8 +1,10 @@
+@import 'src/styles/colors.scss';
+
 .navbar-container {
   padding-top: 56px;
 }
 
 #navbar {
-  background-color: #589442;
+  background-color: $primary;
   color: white;
 }

@@ -4,18 +4,7 @@ query RestaurantProfile($slug: String!) {
     slug
     name
     phone
-    cuisines {
-      name
-      id
-    }
-    country {
-      currency
-      code
-    }
-    region {
-      code
-      name
-    }
+    numericRating
     primaryCuisine {
       id
       name
@@ -23,6 +12,9 @@ query RestaurantProfile($slug: String!) {
     }
     photos: photos(version: FULL_SIZE) {
       url
+    }
+    reviews {
+      count
     }
   }
 }

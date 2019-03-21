@@ -1,3 +1,12 @@
+@import 'src/styles/colors.scss';
+
 body {
   font-family: 'Raleway', sans-serif;
+}
+
+.btn-primary,
+.btn-primary:hover,
+.btn-primary:not(:disabled):not(.disabled):active {
+  background-color: $primary;
+  border-color: $primary;
 }
