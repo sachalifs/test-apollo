@@ -29,7 +29,7 @@ server.route({
 server.route({
   path: '/not-found',
   method: 'GET',
-  handler: (req, h) => h.view('index')
+  handler: (req, h) => h.view('index').code(404)
 })
 
 server.route({
