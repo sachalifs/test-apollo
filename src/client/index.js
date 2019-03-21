@@ -23,7 +23,6 @@ const routing = (
         <Route path="/" component={Home} exact />
         <Route path="/restaurant/:slug" component={Profile} />
         <Route path="/not-found" component={NotFound} />
-        {/* <Route path="/restaurant" component={Restaurants} /> */}
       </Switch>
     </Router>
   </ApolloProvider>
