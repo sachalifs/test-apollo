@@ -28,7 +28,14 @@ class Home extends Component {
     return (
       <div className='container'>
         {restaurants.map((restaurant, i) => {
-          const { name, slug, primaryPhoto, numericRating } = restaurant
+          const {
+            name,
+            slug,
+            primaryPhoto,
+            numericRating,
+            primaryCuisine,
+            zone
+          } = restaurant
 
           return (
             <Link to={`/restaurant/${slug}`} className='row mt-3 pb-3 restaurant-card text-dark' key={i}>
@@ -44,6 +51,11 @@ class Home extends Component {
                     <div className='col-4 text-right small'>
                       <span className='h5'>{numericRating}</span>
                       <span className='text-muted'>/10</span>
+                    </div>
+                  </div>
+                  <div className='row'>
+                    <div className='col text-muted small'>
+                      {primaryCuisine.name} en {zone.name}
                     </div>
                   </div>
                 </div>
