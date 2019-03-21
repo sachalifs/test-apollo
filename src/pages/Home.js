@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { graphql } from 'react-apollo'
+import { Link } from 'react-router-dom'
 import resprofile from 'src/queries/restaurant-profile.graphql'
 import Header from 'src/components/Header'
 import PhotosCarousel from 'src/components/PhotosCarousel'
@@ -18,7 +19,11 @@ class Home extends Component {
 
     if (loading) return 'Loading...'
 
-    return <Header />
+    return (
+      <div>
+        <Link to='/restaurant/foo'>Foo</Link>
+      </div>
+    )
   }
 }
 

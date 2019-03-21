@@ -3,6 +3,7 @@ import { render } from "react-dom"
 import ApolloClient from "apollo-boost"
 import { ApolloProvider } from "react-apollo"
 import { Route, BrowserRouter as Router, Switch } from 'react-router-dom'
+import Header from 'src/components/Header'
 import Home from 'src/pages/Home'
 import Profile from 'src/pages/Profile'
 import { uri } from 'src/config'
@@ -15,6 +16,8 @@ const client = new ApolloClient({
 const routing = (
   <ApolloProvider client={client}>
     <Router>
+      <Header />
+
       <Switch>
         <Route path="/" component={Home} exact />
         <Route path="/restaurant/:id" component={Profile} />

@@ -20,7 +20,6 @@ class Home extends Component {
 
     return (
       <div>
-        <Header />
         <div className='container no-gutters' style={{ padding: 0 }}>
           <div className='col-xs'>
             <PhotosCarousel photos={[
