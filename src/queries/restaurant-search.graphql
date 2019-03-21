@@ -3,6 +3,7 @@ query RestaurantSearch($cuisines: [String]) {
     facets {
       cuisine {
         name
+        slug
       }
     }
     restaurants {

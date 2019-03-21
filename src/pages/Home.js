@@ -5,6 +5,7 @@ import resSerch from 'src/queries/restaurant-search.graphql'
 import 'src/styles/home.scss'
 import RestaurantListItem from 'src/components/RestaurantListItem'
 import Loading from 'src/components/Loading'
+import CuisineSelector from 'src/components/CuisineSelector';
 
 const mapResultsToProps = ({ data: { loading, restaurantSearch, refetch } }) => {
 
@@ -28,8 +29,6 @@ const mapPropsToOptions = () => {
 })
 class Home extends Component {
 
-  handleSelectionChange = (e) => this.updateCuisine(e.target.value)
-
   updateCuisine = (cuisine) => {
     this.props.refetch({ cuisines: cuisine })
   }
@@ -41,9 +40,7 @@ class Home extends Component {
 
     return (
       <div className='container'>
-        <select onChange={this.handleSelectionChange}>
-          {cuisines.map((cuisine, i) => <option value={cuisine.name.toLowerCase()}>{cuisine.name}</option>)}
-        </select>
+        <CuisineSelector cuisines={cuisines} refetch={this.updateCuisine} />
         {restaurants.map((restaurant, i) => (
           <RestaurantListItem key={i} restaurant={restaurant} />
         ))}
