@@ -27,6 +27,12 @@ server.route({
 })
 
 server.route({
+  path: '/not-found',
+  method: 'GET',
+  handler: (req, h) => h.view('index')
+})
+
+server.route({
   path: '/',
   method: 'GET',
   handler: (req, h) => h.view('index')

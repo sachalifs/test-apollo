@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import { withRouter } from 'react-router'
+import { Redirect } from 'react-router-dom'
 import { graphql } from 'react-apollo'
 import resprofile from 'src/queries/restaurant-profile.graphql'
 import Header from 'src/components/Header'
@@ -9,31 +11,41 @@ const mapResultsToProps = props => ({
   loading: props.data.loading
 })
 
-@graphql(resprofile, {
-  props: mapResultsToProps
+const mapPropsToOptions = ({ match }) => ({
+  variables: {
+    slug: match.params.slug
+  }
 })
-class Home extends Component {
+
+@graphql(resprofile, {
+  props: mapResultsToProps,
+  options: mapPropsToOptions
+})
+class Profile extends Component {
   render() {
     const { restaurant, loading } = this.props
 
     if (loading) return 'Loading...'
 
+    if (!restaurant) {
+      return <Redirect to='/not-found' />
+    }
+
+    const {
+      name,
+      photos
+    } = restaurant
+
     return (
       <div>
         <div className='container no-gutters' style={{ padding: 0 }}>
           <div className='col-xs'>
-            <PhotosCarousel photos={[
-              'https://u.tfstatic.com/restaurant_photos/244/69244/169/664/sadler-sala-1449b.jpg',
-              'https://u.tfstatic.com/restaurant_photos/244/69244/169/664/sadler-sala-73ec5.jpg',
-              'https://u.tfstatic.com/restaurant_photos/244/69244/169/664/sadler-sala-6e01e.jpg',
-              'https://u.tfstatic.com/restaurant_photos/244/69244/169/664/sadler-sala-cc909.jpg',
-              'https://u.tfstatic.com/restaurant_photos/244/69244/169/664/sadler-sala-8c620.jpg'
-            ]} />
+            <PhotosCarousel photos={photos.map(p => p.url)} />
           </div>
         </div>
-        <div className='container mt-2'>
+        <div className='container mt-3'>
           <div className='col-xs'>
-            <h1 className='h3'>Sadler</h1>
+            <h1 className='h3'>{restaurant.name}</h1>
           </div>
         </div>
       </div>
@@ -41,4 +53,4 @@ class Home extends Component {
   }
 }
 
-export default Home
+export default withRouter(Profile)

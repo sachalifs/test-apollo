@@ -10,8 +10,15 @@ const mapResultsToProps = props => ({
   loading: props.data.loading
 })
 
+const mapPropsToOptions = () => ({
+  variables: {
+    slug: 'la-cabrera'
+  }
+})
+
 @graphql(resprofile, {
-  props: mapResultsToProps
+  props: mapResultsToProps,
+  options: mapPropsToOptions
 })
 class Home extends Component {
   render() {
@@ -21,6 +28,8 @@ class Home extends Component {
 
     return (
       <div>
+        <Link to='/restaurant/la-cabrera'>La Cabrera</Link>
+        <hr />
         <Link to='/restaurant/foo'>Foo</Link>
       </div>
     )

@@ -1,5 +1,28 @@
-query RestaurantProfile {
-  restaurant(id: 66) {
+query RestaurantProfile($slug: String!) {
+  restaurant(slug: $slug) {
+    id
+    slug
     name
+    phone
+    cuisines {
+      name
+      id
+    }
+    country {
+      currency
+      code
+    }
+    region {
+      code
+      name
+    }
+    primaryCuisine {
+      id
+      name
+      url
+    }
+    photos: photos(version: FULL_SIZE) {
+      url
+    }
   }
 }
