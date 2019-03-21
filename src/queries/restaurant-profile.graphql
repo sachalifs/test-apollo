@@ -5,6 +5,10 @@ query RestaurantProfile($slug: String!) {
     name
     phone
     numericRating
+    zone {
+      id
+      name
+    }
     primaryCuisine {
       id
       name

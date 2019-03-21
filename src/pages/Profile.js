@@ -39,7 +39,8 @@ class Profile extends Component {
       photos,
       numericRating,
       primaryCuisine,
-      reviews
+      reviews,
+      zone
     } = restaurant
 
     return (
@@ -56,7 +57,7 @@ class Profile extends Component {
             </div>
           </div>
           <div className='row'>
-            <div className='col-9 h5'>{primaryCuisine.name}</div>
+            <div className='col-9 h5'>{primaryCuisine.name} en {zone.name}</div>
             <div className='col-3'>
               <span className='h4'>{numericRating}</span>
               <span className='text-muted'>/10</span>
