@@ -3,8 +3,9 @@ import { render } from "react-dom"
 import ApolloClient from "apollo-boost"
 import { ApolloProvider } from "react-apollo"
 import { Route, BrowserRouter as Router, Switch } from 'react-router-dom'
-import App from './App'
-import { uri } from 'config'
+import Home from 'src/pages/Home'
+import { uri } from 'src/config'
+import './styles.scss'
 
 const client = new ApolloClient({
   uri
@@ -14,7 +15,7 @@ const routing = (
   <ApolloProvider client={client}>
     <Router>
       <Switch>
-        <Route path="/" component={App} />
+        <Route path="/" component={Home} />
         {/* <Route path="/restaurant" component={Restaurants} /> */}
       </Switch>
     </Router>

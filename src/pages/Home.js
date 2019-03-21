@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
 import { graphql } from 'react-apollo'
-import resprofile from 'queries/restaurant-profile.graphql'
-import Header from 'components/Header'
-import PhotosCarousel from 'components/PhotosCarousel'
-import './styles.scss'
+import resprofile from 'src/queries/restaurant-profile.graphql'
+import Header from 'src/components/Header'
+import PhotosCarousel from 'src/components/PhotosCarousel'
 
 const mapResultsToProps = props => ({
   restaurant: props.data.restaurant,
@@ -13,7 +12,7 @@ const mapResultsToProps = props => ({
 @graphql(resprofile, {
   props: mapResultsToProps
 })
-class App extends Component {
+class Home extends Component {
   render() {
     const { restaurant, loading } = this.props
 
@@ -43,4 +42,4 @@ class App extends Component {
   }
 }
 
-export default App
+export default Home
