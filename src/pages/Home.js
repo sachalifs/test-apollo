@@ -7,14 +7,12 @@ import RestaurantListItem from 'src/components/RestaurantListItem'
 import Loading from 'src/components/Loading'
 import CuisineSelector from 'src/components/CuisineSelector';
 
-const mapResultsToProps = ({ data: { loading, restaurantSearch, refetch } }) => {
-
-return({
+const mapResultsToProps = ({ data: { loading, restaurantSearch, refetch } }) => ({
   restaurants: restaurantSearch && restaurantSearch.restaurants,
   cuisines: restaurantSearch && restaurantSearch.facets.cuisine,
   loading,
   refetch
-})}
+})
 
 const mapPropsToOptions = () => ({
   variables: {
