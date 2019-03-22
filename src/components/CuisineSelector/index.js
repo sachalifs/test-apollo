@@ -3,9 +3,8 @@ import PropTypes from 'prop-types'
 import './styles.scss'
 
 class CuisineSelector extends React.Component {
-
   render() {
-    const { cuisines, refetch } = this.props
+    const { cuisines, onSelectedCuisineChange } = this.props
 
     return (
       <div class="dropdown">
@@ -14,7 +13,7 @@ class CuisineSelector extends React.Component {
         </button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
           {cuisines.map((cuisine, i) =>
-            <button class="dropdown-item" type="button" key={i} onClick={() => refetch(cuisine.slug)}>
+            <button class="dropdown-item" type="button" key={i} onClick={() => onSelectedCuisineChange(cuisine.slug)}>
               {cuisine.name}
             </button>
           )}
@@ -26,7 +25,7 @@ class CuisineSelector extends React.Component {
 
 CuisineSelector.propTypes = {
   cuisines: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-  refetch: PropTypes.func.isRequired
+  onSelectedCuisineChange: PropTypes.func.isRequired
 }
 
 export default CuisineSelector

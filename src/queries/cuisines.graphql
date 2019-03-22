@@ -1,0 +1,11 @@
+query Cuisines {
+  selectedCuisine @client
+  restaurantSearch {
+    facets {
+      cuisine {
+        name
+        slug
+      }
+    }
+  }
+}

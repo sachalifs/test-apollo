@@ -1,11 +1,5 @@
 query RestaurantSearch($cuisines: [String]) {
   restaurantSearch(cuisines: $cuisines) {
-    facets {
-      cuisine {
-        name
-        slug
-      }
-    }
     restaurants {
       id
       internalId
