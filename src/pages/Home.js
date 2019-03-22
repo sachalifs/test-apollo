@@ -16,12 +16,11 @@ return({
   refetch
 })}
 
-const mapPropsToOptions = () => {
-  return({
+const mapPropsToOptions = () => ({
   variables: {
     cuisines: 'americana'
   }
-})}
+})
 
 @graphql(resSerch, {
   props: mapResultsToProps,
