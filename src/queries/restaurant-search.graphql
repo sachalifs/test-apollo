@@ -1,5 +1,4 @@
 query RestaurantSearch($cuisines: [String]) {
-  selectedCuisine @client
   restaurantSearch(cuisines: $cuisines) {
     restaurants {
       id

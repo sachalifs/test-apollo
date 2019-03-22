@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { graphql } from 'react-apollo'
+import { ApolloConsumer, graphql } from 'react-apollo'
 
 import CuisineSelector from 'src/components/CuisineSelector'
 import CUISINES_QUERY from 'src/queries/cuisines.graphql'
@@ -12,19 +12,16 @@ const mapResultsToProps = ({ data: { loading, restaurantSearch, selectedCuisine,
   refetch
 })
 
-const mapPropsToOptions = () => ({
-  variables: {
-    cuisines: 'americana'
-  }
-})
-
 @graphql(CUISINES_QUERY, {
-  props: mapResultsToProps,
-  options: mapPropsToOptions
+  props: mapResultsToProps
 })
 class CuisineSelectorContainer extends Component {
-  handleSelectedCuisineChange = ({ cuisines }) => {
-    this.props.refetch({ cusines })
+  handleSelectedCuisineChange = client => selectedCuisine => {
+    client.writeData({
+      data: {
+        selectedCuisine
+      }
+    })
   }
 
   render() {
@@ -33,10 +30,14 @@ class CuisineSelectorContainer extends Component {
     if (loading) return <Loading />
 
     return (
-      <CuisineSelector
-        cuisines={cuisines}
-        selectedCuisine={selectedCuisine}
-        onSelectedCuisineChange={this.handleSelectedCuisineChange} />
+      <ApolloConsumer>
+        {client => (
+          <CuisineSelector
+            cuisines={cuisines}
+            selectedCuisine={selectedCuisine}
+            onSelectedCuisineChange={this.handleSelectedCuisineChange(client)} />
+        )}
+      </ApolloConsumer>
     )
   }
 }
