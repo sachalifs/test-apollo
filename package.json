@@ -1,14 +1,11 @@
 {
   "name": "test-apollo",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "start": "NODE_PATH=src nodemon --exec babel-node src/server",
     "build": "webpack"
   },
-  "author": "",
-  "license": "ISC",
   "dependencies": {
     "@babel/cli": "^7.2.3",
     "@babel/core": "^7.4.0",
