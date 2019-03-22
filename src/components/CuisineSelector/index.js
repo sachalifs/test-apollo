@@ -2,14 +2,16 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import './styles.scss'
 
+const capitalize = str => str[0].toUpperCase() + str.slice(1).toLowerCase()
+
 class CuisineSelector extends React.Component {
   render() {
-    const { cuisines, onSelectedCuisineChange } = this.props
+    const { cuisines, selectedCuisine, onSelectedCuisineChange } = this.props
 
     return (
       <div class="dropdown">
         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Tipo de cocina
+          Tipo de cocina: {capitalize(selectedCuisine)}
         </button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
           {cuisines.map((cuisine, i) =>

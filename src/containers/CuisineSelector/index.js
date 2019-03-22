@@ -28,14 +28,15 @@ class CuisineSelectorContainer extends Component {
   }
 
   render() {
-    const { loading, selectedCuisine, cuisines = [] } = this.props
-
-    console.log({ cuisines, selectedCuisine })
+    const { loading, selectedCuisine, cuisines } = this.props
 
     if (loading) return <Loading />
 
     return (
-      <CuisineSelector cuisines={cuisines} onSelectedCuisineChange={this.handleSelectedCuisineChange} />
+      <CuisineSelector
+        cuisines={cuisines}
+        selectedCuisine={selectedCuisine}
+        onSelectedCuisineChange={this.handleSelectedCuisineChange} />
     )
   }
 }
