@@ -13,6 +13,8 @@ class CuisineSelectorContainer extends Component {
 
     if (loading) return <Loading />
 
+    console.log({ cuisines })
+
     return (
       <CuisineSelector
         cuisines={cuisines}
@@ -22,10 +24,10 @@ class CuisineSelectorContainer extends Component {
   }
 }
 
-const mapStateToProps = ({ selectedCuisine }) => ({
-  cuisines: [],
-  selectedCuisine,
-  loading: false
+const mapStateToProps = ({ cuisines, selectedCuisine }) => ({
+  cuisines: cuisines.slugs.map(s => cuisines.bySlug[s]),
+  loading: cuisines.loading,
+  selectedCuisine
 })
 
 const mapDispatchToProps = dispatch => bindActionCreators({

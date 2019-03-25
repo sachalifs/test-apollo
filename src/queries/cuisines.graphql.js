@@ -1,5 +1,4 @@
-query Cuisines {
-  selectedCuisine @client
+export default `query Cuisines {
   restaurantSearch {
     facets {
       cuisine {
@@ -8,4 +7,4 @@ query Cuisines {
       }
     }
   }
-}
+}`
