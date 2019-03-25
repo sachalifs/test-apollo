@@ -24,6 +24,7 @@ module.exports = {
       }
     ]
   },
+  devtool: 'eval-source-map',
   plugins: [
     new MiniCssExtractPlugin({
       // Options similar to the same options in webpackOptions.output

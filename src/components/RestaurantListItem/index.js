@@ -1,17 +1,6 @@
 import React from 'react'
-import { graphql } from 'react-apollo'
 import { Link } from 'react-router-dom'
-import PROFILE_QUERY from 'src/queries/restaurant-profile.graphql'
 
-const mapPropsToOptions = ({ restaurant }) => ({
-  variables: {
-    slug: restaurant.slug
-  }
-})
-
-@graphql(PROFILE_QUERY, {
-  options: mapPropsToOptions
-})
 class RestaurantListItem extends React.Component {
   render () {
     const {

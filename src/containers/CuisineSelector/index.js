@@ -1,28 +1,12 @@
 import React, { Component } from 'react'
-import { ApolloConsumer, graphql } from 'react-apollo'
-
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
 import CuisineSelector from 'src/components/CuisineSelector'
-import CUISINES_QUERY from 'src/queries/cuisines.graphql'
 import Loading from 'src/components/Loading'
+import { changeSelectedCuisine } from 'src/actions'
 
-const mapResultsToProps = ({ data: { loading, restaurantSearch, selectedCuisine, refetch } }) => ({
-  cuisines: restaurantSearch && restaurantSearch.facets.cuisine,
-  selectedCuisine,
-  loading,
-  refetch
-})
-
-@graphql(CUISINES_QUERY, {
-  props: mapResultsToProps
-})
 class CuisineSelectorContainer extends Component {
-  handleSelectedCuisineChange = client => selectedCuisine => {
-    client.writeData({
-      data: {
-        selectedCuisine
-      }
-    })
-  }
+  handleSelectedCuisineChange = selectedCuisine => this.props.onSelectedCuisineChange
 
   render() {
     const { loading, selectedCuisine, cuisines } = this.props
@@ -30,16 +14,22 @@ class CuisineSelectorContainer extends Component {
     if (loading) return <Loading />
 
     return (
-      <ApolloConsumer>
-        {client => (
-          <CuisineSelector
-            cuisines={cuisines}
-            selectedCuisine={selectedCuisine}
-            onSelectedCuisineChange={this.handleSelectedCuisineChange(client)} />
-        )}
-      </ApolloConsumer>
+      <CuisineSelector
+        cuisines={cuisines}
+        selectedCuisine={selectedCuisine}
+        onSelectedCuisineChange={this.handleSelectedCuisineChange} />
     )
   }
 }
 
-export default CuisineSelectorContainer
+const mapStateToProps = ({ selectedCuisine }) => ({
+  cuisines: [],
+  selectedCuisine,
+  loading: false
+})
+
+const mapDispatchToProps = dispatch => bindActionCreators({
+  onSelectedCuisineChange: changeSelectedCuisine
+}, dispatch)
+
+export default connect(mapStateToProps, mapDispatchToProps)(CuisineSelectorContainer)

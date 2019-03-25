@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router'
 import { Redirect } from 'react-router-dom'
-import { graphql } from 'react-apollo'
-import resprofile from 'src/queries/restaurant-profile.graphql'
 import Header from 'src/components/Header'
 import PhotosCarousel from 'src/components/PhotosCarousel'
 import Loading from 'src/components/Loading'
@@ -10,26 +8,11 @@ import FormatNumber from 'format-number'
 
 const format = FormatNumber({ integerSeparator: '.' })
 
-const mapResultsToProps = props => ({
-  restaurant: props.data.restaurant,
-  loading: props.data.loading
-})
-
-const mapPropsToOptions = ({ match }) => ({
-  variables: {
-    slug: match.params.slug
-  }
-})
-
-@graphql(resprofile, {
-  props: mapResultsToProps,
-  options: mapPropsToOptions
-})
 class Profile extends Component {
   render() {
     const { restaurant, loading } = this.props
 
-    if (loading) return <Loading />
+    if (true) return <Loading />
 
     if (!restaurant) {
       return <Redirect to='/not-found' />
