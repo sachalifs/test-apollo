@@ -1,6 +1,6 @@
 import React from 'react';
 import Loading from '../src/components/Loading'
-import RestaurantListItem from '../src/components/RestaurantListItem'
+import RestaurantItem from '../src/components/RestaurantListItem/ListItem'
 import { BrowserRouter } from 'react-router-dom'
 
 import { storiesOf } from '@storybook/react';
@@ -75,3 +75,4 @@ const restaurant = {
 
 storiesOf('Development', module)
   .add('Loading', () => <Loading />)
+  .add('RestaurantListItem', () => <BrowserRouter><RestaurantItem restaurant={restaurant} /></BrowserRouter>)
