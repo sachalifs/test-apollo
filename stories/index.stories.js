@@ -5,6 +5,7 @@ import Loading from '../src/components/Loading'
 import RestaurantItem from '../src/components/RestaurantListItem/ListItem'
 import Subtitle from '../src/components/RestaurantProfile/Subtitle'
 import BookButton from '../src/components/RestaurantProfile/BookButton'
+import ProfileComponent from '../src/components/RestaurantProfile'
 import { BrowserRouter } from 'react-router-dom'
 import '../src/client/styles.scss'
 
@@ -98,3 +99,5 @@ stories.add('Restaurant Subtitle', () =>
   )
 
 stories.add('Book Button', () => <BookButton />)
+
+stories.add('Profile', () => <ProfileComponent restaurant={restaurant} />)
