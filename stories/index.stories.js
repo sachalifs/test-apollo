@@ -75,4 +75,8 @@ const restaurant = {
 
 storiesOf('Development', module)
   .add('Loading', () => <Loading />)
-  .add('RestaurantListItem', () => <BrowserRouter><RestaurantItem restaurant={restaurant} /></BrowserRouter>)
+  .add('RestaurantListItem', () =>
+    <BrowserRouter>
+      <RestaurantItem restaurant={restaurant} />
+    </BrowserRouter>
+  )
