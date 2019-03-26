@@ -1,10 +1,11 @@
-import React from 'react';
+import { storiesOf } from '@storybook/react'
+import { withKnobs, text, number } from '@storybook/addon-knobs/react'
+import React from 'react'
 import Loading from '../src/components/Loading'
 import RestaurantItem from '../src/components/RestaurantListItem/ListItem'
 import Subtitle from '../src/components/RestaurantProfile/Subtitle'
 import BookButton from '../src/components/RestaurantProfile/BookButton'
 import { BrowserRouter } from 'react-router-dom'
-import { storiesOf } from '@storybook/react'
 import '../src/client/styles.scss'
 
 const restaurant = {
@@ -75,22 +76,25 @@ const restaurant = {
   },
 }
 
-storiesOf('Development', module)
-  .add('Loading', () => <Loading />)
+const stories = storiesOf('Development', module)
 
-  .add('RestaurantListItem', () =>
+stories.addDecorator(withKnobs)
+
+stories.add('Loading', () => <Loading />)
+
+stories.add('RestaurantListItem', () =>
     <BrowserRouter>
       <RestaurantItem restaurant={restaurant} />
     </BrowserRouter>
   )
 
-  .add('Restaurant Subtitle', () =>
+stories.add('Restaurant Subtitle', () =>
     <Subtitle
-      cuisine={restaurant.primaryCuisine.name}
-      zone={restaurant.zone.name}
-      numericRating={restaurant.numericRating}
-      reviews={restaurant.reviews.count}
+      cuisine={text('Cuisine', restaurant.primaryCuisine.name)}
+      zone={text('Zone', restaurant.zone.name)}
+      numericRating={number('Rating', restaurant.numericRating)}
+      reviews={number('Review Count', restaurant.reviews.count)}
     />
   )
 
-  .add('Book Button', () => <BookButton />)
+stories.add('Book Button', () => <BookButton />)
