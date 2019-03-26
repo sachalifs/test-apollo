@@ -17,8 +17,16 @@ query RestaurantProfile($slug: String!) {
     photos: photos(version: FULL_SIZE) {
       url
     }
-    reviews {
+    reviews(pagination: { page: 1, count: 5 }) {
       count
+      excellentRatedCount
+      goodRatedCount
+      badRatedCount
+      withBodyCount
+      review {
+        slug
+        body
+      }
     }
   }
 }

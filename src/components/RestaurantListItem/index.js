@@ -1,7 +1,7 @@
 import React from 'react'
 import { graphql } from 'react-apollo'
 import { Link } from 'react-router-dom'
-import PROFILE_QUERY from 'src/queries/restaurant-profile.graphql'
+import PROFILE_QUERY from '../../queries/restaurant-profile.graphql'
 
 const mapPropsToOptions = ({ restaurant }) => ({
   variables: {
