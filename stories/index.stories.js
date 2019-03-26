@@ -1,9 +1,11 @@
 import React from 'react';
 import Loading from '../src/components/Loading'
 import RestaurantItem from '../src/components/RestaurantListItem/ListItem'
+import Subtitle from '../src/components/RestaurantProfile/Subtitle'
+import BookButton from '../src/components/RestaurantProfile/BookButton'
 import { BrowserRouter } from 'react-router-dom'
-
-import { storiesOf } from '@storybook/react';
+import { storiesOf } from '@storybook/react'
+import '../src/client/styles.scss'
 
 const restaurant = {
   "id": "rey-del-vino",
@@ -75,8 +77,20 @@ const restaurant = {
 
 storiesOf('Development', module)
   .add('Loading', () => <Loading />)
+
   .add('RestaurantListItem', () =>
     <BrowserRouter>
       <RestaurantItem restaurant={restaurant} />
     </BrowserRouter>
   )
+
+  .add('Restaurant Subtitle', () =>
+    <Subtitle
+      cuisine={restaurant.primaryCuisine.name}
+      zone={restaurant.zone.name}
+      numericRating={restaurant.numericRating}
+      reviews={restaurant.reviews.count}
+    />
+  )
+
+  .add('Book Button', () => <BookButton />)

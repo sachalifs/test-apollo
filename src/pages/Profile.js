@@ -46,9 +46,7 @@ class Profile extends Component {
     return (
       <div>
         <div className='container no-gutters' style={{ padding: 0 }}>
-          <div className='col-xs'>
-            <PhotosCarousel photos={photos.map(p => p.url)} />
-          </div>
+          <PhotosCarousel photos={photos.map(p => p.url)} />
         </div>
         <div className='container mt-3'>
           <Title name={name} />
