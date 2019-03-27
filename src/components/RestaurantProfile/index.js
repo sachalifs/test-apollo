@@ -3,6 +3,7 @@ import PhotosCarousel from '../PhotosCarousel'
 import Title from './Title'
 import Subtitle from './Subtitle'
 import BookButton from './BookButton'
+import Reviews from './Reviews'
 
 const Profile = ({
   restaurant: {
