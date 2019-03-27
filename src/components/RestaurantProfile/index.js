@@ -27,6 +27,7 @@ const Profile = ({
         reviews={reviews.count}
       />
       <BookButton />
+      {/* Skere review component here */}
     </div>
   </div>
 )
