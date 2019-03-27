@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "NODE_PATH=src nodemon --exec babel-node src/server",
+    "start": "webpack && NODE_PATH=src nodemon --exec babel-node src/server",
     "build": "webpack",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
